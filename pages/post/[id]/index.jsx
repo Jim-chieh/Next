@@ -8,9 +8,8 @@
 // }
 
 export async function getServerSideProps(context) {
-	const res = await fetch(
-		`https://jsonplaceholder.typicode.com/posts/${context.params.id}`
-	);
+	console.log(context.params.id);
+	const res = await fetch(`http://localhost:3000/api/${context.params.id}`);
 	const data = await res.json();
 
 	return { props: { post: data } };
@@ -20,8 +19,8 @@ export default function Home({ post }) {
 	console.log(post);
 	return (
 		<div>
-			<h1>{post?.title}</h1>
-			<p>{post?.body}</p>
+			<img src={post?.photo} />
+			<p>{post?.name}</p>
 		</div>
 	);
 }

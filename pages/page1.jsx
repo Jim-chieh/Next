@@ -5,7 +5,7 @@ export default function Home() {
 	const [post, setPost] = useState();
 
 	useEffect(() => {
-		fetch('https://jsonplaceholder.typicode.com/posts/1')
+		fetch('http://localhost:3000/api/data')
 			.then(res => res.json())
 			.then(res => setPost(res));
 	}, []);
@@ -13,8 +13,12 @@ export default function Home() {
 	return (
 		<div>
 			<Title />
-			<h1>{post?.title}</h1>
-			<p>{post?.body}</p>
+			{post?.map(item => (
+				<div key={item.key}>
+					<img src={item.photo} />
+					<h1>{item.name}</h1>
+				</div>
+			))}
 		</div>
 	);
 }
