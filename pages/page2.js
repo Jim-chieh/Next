@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 export async function getStaticProps() {
-	const res = await fetch('https://mydb.vercel.app/api/data');
+	const res = await fetch('https://mydb.vercel.app/api/hello');
 	const data = await res.json();
 
 	return { props: { post: data } };
