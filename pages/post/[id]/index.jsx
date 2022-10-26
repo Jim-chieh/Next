@@ -1,14 +1,15 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export async function getStaticProps(context) {
-	const res = await fetch(`http://localhost:3000/api/${context.params.id}`);
+	const res = await fetch(`https://mydb.vercel.app/api/hello`);
 	const data = await res.json();
 
 	return { props: { post: data } };
 }
 
 export async function getStaticPaths() {
-	const res = await fetch('https://mydb.vercel.app/api/data');
+	const res = await fetch('https://mydb.vercel.app/api/hello');
 	const data = await res.json();
 	const paths = data.map(post => ({ params: { id: post.id.toString() } }));
 	return {
@@ -22,16 +23,21 @@ const myLoader = ({ src, width, quality }) => {
 };
 
 export default function Data({ post }) {
+	const router = useRouter();
+	console.log(router.query.id);
+	const resObj = post.filter(data => data.id.toString() === router.query.id);
+	const newObj = resObj[0];
+	console.log(newObj);
 	return (
 		<div>
 			<Image
 				loader={myLoader}
-				src={post.photo}
+				src={newObj.photo}
 				width={300}
 				height={300}
 				priority={true}
 			/>
-			<h1>{post.name}</h1>
+			<h1>{newObj.name}</h1>
 		</div>
 	);
 }

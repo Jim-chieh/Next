@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 export async function getServerSideProps() {
-	const res = await fetch('https://mydb.vercel.app/api/data');
+	const res = await fetch('https://mydb.vercel.app/api/hello');
 	const data = await res.json();
 
 	return { props: { post: data } };
@@ -12,6 +12,7 @@ const myLoader = ({ src, width }) => {
 };
 
 export default function Home({ post }) {
+	console.log(post);
 	return (
 		<div>
 			{post?.map(item => (
