@@ -1,10 +1,7 @@
-import Title from './title';
-
 export default function Home() {
 	return (
 		<div>
-			<Title />
-			<h1>Test</h1>
+			<h1>首頁</h1>
 		</div>
 	);
 }

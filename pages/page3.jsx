@@ -1,25 +1,40 @@
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export async function getServerSideProps() {
-	const res = await fetch('https://jsonplaceholder.typicode.com/posts/7');
+	const res = await fetch('http://localhost:3000/api/data');
 	const data = await res.json();
 
 	return { props: { post: data } };
 }
 
+const myLoader = ({ src, width }) => {
+	return `${src}?w=${width}`;
+};
+
 export default function Home({ post }) {
 	const [newPost, setNewPost] = useState();
 	useEffect(() => {
-		fetch('https://jsonplaceholder.typicode.com/posts/1')
+		fetch('http://localhost:3000/api/7')
 			.then(res => res.json())
 			.then(res => setNewPost(res));
 	}, []);
-	console.log(newPost);
 	return (
 		<div>
-			<h1>{post?.title}</h1>
-			<h2>{newPost?.body}</h2>
-			<p>{post?.body}</p>
+			{post?.map(item => (
+				<div key={item.id}>
+					<Image
+						loader={myLoader}
+						src={item.photo}
+						width={300}
+						height={300}
+						priority={true}
+					/>
+
+					<h1>{item.name}</h1>
+				</div>
+			))}
+			{/* <img src={newPost?.photo} /> */}
 		</div>
 	);
 }

@@ -1,5 +1,3 @@
-import Title from './title';
-
 export async function getServerSideProps({ req, res }) {
 	res.setHeader(
 		'Cache-Control',
@@ -16,7 +14,6 @@ export async function getServerSideProps({ req, res }) {
 export default function Index({ time }) {
 	return (
 		<main>
-			<Title />
 			<h1>SSR Caching with Next.js</h1>
 			<time dateTime={time}>{time}</time>
 		</main>

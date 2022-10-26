@@ -1,14 +1,11 @@
 import '../styles/globals.css';
-import Footer from './footer';
-import Header from './header';
+import Layout from './layout';
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<>
-			<Header />
+		<Layout>
 			<Component {...pageProps} />
-			<Footer />
-		</>
+		</Layout>
 	);
 }
 

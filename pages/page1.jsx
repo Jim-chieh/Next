@@ -1,8 +1,10 @@
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Title from './title';
 
 export default function Home() {
 	const [post, setPost] = useState();
+	const router = useRouter();
+	console.log(router.query);
 
 	useEffect(() => {
 		fetch('http://localhost:3000/api/data')
@@ -12,7 +14,6 @@ export default function Home() {
 
 	return (
 		<div>
-			<Title />
 			{post?.map(item => (
 				<div key={item.id}>
 					<img src={item.photo} />

@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Title from './title';
 
 const imgLoader = ({ src }) => {
 	return src;
@@ -8,7 +7,6 @@ const imgLoader = ({ src }) => {
 function NotFound() {
 	return (
 		<div>
-			<Title />
 			<Image
 				loader={imgLoader}
 				src={
