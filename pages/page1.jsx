@@ -1,13 +1,11 @@
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
 	const [post, setPost] = useState();
-	const router = useRouter();
-	console.log(router.query);
+	console.log(post);
 
 	useEffect(() => {
-		fetch('https://mydb.vercel.app/api/data')
+		fetch('/api/data')
 			.then(res => res.json())
 			.then(res => setPost(res));
 	}, []);

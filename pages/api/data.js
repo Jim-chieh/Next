@@ -1,6 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
+	const resp = await fetch('https://mydb.vercel.app/api/data');
+	const data = await resp.json();
 	const dataArr = [
 		{ name: 'Vim中注定', id: 0, photo: 'https://cataas.com/cat/cute/says/0' },
 		{
@@ -54,6 +56,6 @@ export default function handler(req, res) {
 			photo: 'https://cataas.com/cat/cute/says/10'
 		}
 	];
-	res.status(200).json(dataArr);
+	res.status(200).json(data);
 }
 

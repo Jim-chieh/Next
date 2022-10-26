@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 export async function getStaticProps(context) {
-	const res = await fetch(`https://mydb.vercel.app/api/${context.params.id}`);
+	const res = await fetch(`http://localhost:3000/api/${context.params.id}`);
 	const data = await res.json();
 
 	return { props: { post: data } };
@@ -17,8 +17,8 @@ export async function getStaticPaths() {
 	};
 }
 
-const myLoader = ({ src, width }) => {
-	return `${src}?w=${width}`;
+const myLoader = ({ src, width, quality }) => {
+	return `${src}?w=${width}&q=${quality || 75}`;
 };
 
 export default function Data({ post }) {
