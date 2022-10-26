@@ -14,7 +14,7 @@ export default function Home() {
 		<div>
 			<Title />
 			{post?.map(item => (
-				<div key={item.key}>
+				<div key={item.id}>
 					<img src={item.photo} />
 					<h1>{item.name}</h1>
 				</div>
