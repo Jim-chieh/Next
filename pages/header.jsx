@@ -10,13 +10,13 @@ export default function Header() {
 				<Link href="/">點我回首頁</Link>
 			</li>
 			<li>
-				<Link href="/page1">page1</Link>
+				<Link href="/page1">csr</Link>
 			</li>
 			<li>
-				<Link href="/page2">page2</Link>
+				<Link href="/page2">ssg</Link>
 			</li>
 			<li>
-				<Link href="/page3">page3</Link>
+				<Link href="/page3">ssr</Link>
 			</li>
 			<li>
 				<Link href={`/post/${getRandomInt()}`}>隨機</Link>
