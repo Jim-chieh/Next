@@ -7,7 +7,7 @@ export default function Home() {
 	console.log(router.query);
 
 	useEffect(() => {
-		fetch('http://localhost:3000/api/data')
+		fetch('https://mydb.vercel.app/api/data')
 			.then(res => res.json())
 			.then(res => setPost(res));
 	}, []);
